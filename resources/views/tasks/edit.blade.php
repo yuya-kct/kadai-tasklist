@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="prose ml-4">
-        <h2 class="text-lg">id: {{ $task->id }} のメッセージ編集ページ</h2>
+        <h2 class="text-lg">id: {{ $task->id }} のタスク編集ページ</h2>
     </div>
 
     <div class="flex justify-center">
@@ -11,6 +11,12 @@
             @csrf
             @method('PUT')
 
+                <div class="form-control my-4">
+                    <label for="status" class="label">
+                        <span class="label-text">ステータス:</span>
+                    </label>
+                    <input type="text" name="status" value="{{ $task->status }}" class="input input-bordered w-full">
+                </div>
                 <div class="form-control my-4">
                     <label for="content" class="label">
                         <span class="label-text">タスク:</span>
