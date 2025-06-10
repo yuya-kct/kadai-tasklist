@@ -6,31 +6,38 @@
         <h2 class="text-lg">id = {{ $task->id }} のタスク詳細ページ</h2>
     </div>
 
-    <table class="table w-full my-4">
-        <tr>
-            <th>id</th>
-            <td>{{ $task->id }}</td>
-        </tr>
-        <tr>
-            <th>ステータス</th>
-            <td>{{ $task->status }}</td>
-        </tr>
-        <tr>
-            <th>タスク</th>
-            <td>{{ $task->content }}</td>
-        </tr>
-    </table>
+    @auth
+        <table class="table w-full my-4">
+            <tr>
+                <th>id</th>
+                <td>{{ $task->id }}</td>
+            </tr>
+            <tr>
+                <th>ステータス</th>
+                <td>{{ $task->status }}</td>
+            </tr>
+            <tr>
+                <th>タスク</th>
+                <td>{{ $task->content }}</td>
+            </tr>
+            <tr>
+                <th>User_Name</th>
+                <td>{{ $task->user->name }}</td>
+            </tr>
+        </table>
 
-    {{-- タスク編集ページへのリンク --}}
-    <a class="btn btn-outline" href="{{ route('tasks.edit', $task->id) }}">このタスクを編集</a>
+        {{-- タスク編集ページへのリンク --}}
+        <a class="btn btn-outline" href="{{ route('tasks.edit', $task->id) }}">このタスクを編集</a>
 
-    {{-- メッセージ削除フォーム --}}
-    <form method="POST" action="{{ route('tasks.destroy', $task->id) }}" class="my-2">
-        @csrf
-        @method('DELETE')
+        {{-- タスク削除フォーム --}}
+        <form method="POST" action="{{ route('tasks.destroy', $task->id) }}" class="my-2">
+            @csrf
+            @method('DELETE')
 
-        <button type="submit" class="btn btn-error btn-outline"
-            onclick="return confirm('id = {{ $task->id }} のタスクを削除します。よろしいですか？')">削除</button>
-    </form>
-
+            <button type="submit" class="btn btn-error btn-outline"
+                onclick="return confirm('id = {{ $task->id }} のタスクを削除します。よろしいですか？')">削除</button>
+        </form>
+    @else
+        <p></p>
+    @endauth
 @endsection

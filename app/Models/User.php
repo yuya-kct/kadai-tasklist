@@ -46,6 +46,7 @@ class User extends Authenticatable
     /**
      * このユーザーが所有するタスク。（ Taskモデルとの関係を定義）
      */
+    /*
     public function tasks()
     {
         return $this->hasMany(Task::class);
@@ -55,4 +56,5 @@ class User extends Authenticatable
     {
         $this->loadCount('tasks');
     }
+    */
 }

@@ -9,7 +9,7 @@ class Task extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['content'];
+    protected $fillable = ['content','status'];
 
     /**
      * この投稿を所有するユーザー。（ Userモデルとの関係を定義）
