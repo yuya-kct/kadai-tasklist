@@ -1,6 +1,6 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
-import typography  from '@tailwindcss/typography';
+import typography  from '@tailwindcss/typography';  // 追記
 import daisyui from 'daisyui';
 
 /** @type {import('tailwindcss').Config} */
